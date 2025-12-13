@@ -24,12 +24,12 @@ export default function WorkExperience() {
       period: "May 2024 – Present",
       duration: "1.5+ Years",
       description:
-        "Lead digital transformation initiatives and deploy AI solutions for enterprise clients. Architect and implement scalable systems for mission-critical applications.",
+        "Lead technical initiatives for digital transformation and enterprise AI deployment.",
       highlights: [
-        "Lead Mobile ERP Transformation - Migrated legacy ERP systems to modern mobile architectures",
-        "Face ID Integration - Implemented biometric authentication systems for attendance tracking",
-        "Pet Shop Management System - Built comprehensive fullstack solution for inventory and sales management",
-        "Enterprise AI Solutions - Deployed high-performance AI systems for digital innovation",
+        "Legacy to Mobile Migration: Spearheaded the transformation of legacy ERP systems into modern, offline-first mobile architectures.",
+        "AI Implementation: Engineered biometric authentication systems (FaceID) for attendance tracking, optimized for standard hardware.",
+        "Full Stack Ecosystems: Built comprehensive solutions (POS, Inventory, CRM) for retail clients like Pet Shops.",
+        "Infrastructure: Deployed high-performance, containerized AI systems ensuring 99.9% uptime.",
       ],
       skills: ["React", "NestJS", "Python", "OpenCV", "PostgreSQL", "Docker", "Nginx"],
       color: "from-cyan-500/20 to-blue-500/20",
@@ -40,12 +40,10 @@ export default function WorkExperience() {
       period: "Feb 2024 – Apr 2024",
       duration: "3 Months",
       description:
-        "Developed mobile applications and learned full-stack development practices in a professional environment.",
+        "Developed performant React Native applications and implemented secure API consumption strategies.",
       highlights: [
-        "React Native App Development - Built cross-platform mobile applications",
-        "UI/UX Implementation - Designed and implemented user interfaces following design specs",
-        "API Integration - Connected mobile apps to backend services",
-        "Team Collaboration - Worked closely with senior developers and learned industry best practices",
+        "Cross-Platform Development: Developed performant React Native applications, translating design specs into responsive UI/UX.",
+        "Backend Integration: Implemented secure API consumption strategies and worked closely with senior architects to adopt industry best practices.",
       ],
       skills: ["React Native", "JavaScript", "REST APIs", "UI/UX", "Git"],
       color: "from-purple-500/20 to-pink-500/20",
@@ -66,9 +64,8 @@ export default function WorkExperience() {
           {experiences.map((exp, idx) => (
             <div
               key={idx}
-              className={`p-8 rounded-lg border border-border bg-gradient-to-br ${exp.color} hover:border-secondary/50 transition-all duration-300 hover:shadow-lg hover:shadow-secondary/10 ${
-                isVisible ? "animate-slide-in-left" : "opacity-0"
-              }`}
+              className={`p-8 rounded-lg border border-border bg-gradient-to-br ${exp.color} hover:border-secondary/50 transition-all duration-300 hover:shadow-lg hover:shadow-secondary/10 ${isVisible ? "animate-slide-in-left" : "opacity-0"
+                }`}
               style={isVisible ? { animationDelay: `${idx * 0.2}s` } : {}}
             >
               <div className="grid md:grid-cols-3 gap-6 mb-6">

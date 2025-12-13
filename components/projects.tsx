@@ -10,18 +10,20 @@ const projects = [
     role: "Lead Engineer",
     category: "Legacy Modernization & Mobile Dev",
     description:
-      "Led the migration of a monolithic PHP ERP system into a modern mobile ecosystem using React Native, enabling 100+ remote staff to access critical business functions offline.",
+      "Led the strategic migration of a monolithic PHP ERP system into a modern mobile ecosystem using React Native, empowering 100+ remote staff with offline capabilities.",
     challenge:
-      "Decoupling business logic from a legacy PHP codebase without breaking existing web operations while maintaining data consistency.",
+      "Decoupling complex business logic from a legacy PHP codebase while ensuring data consistency without disrupting ongoing web operations.",
     solution: [
-      "Refactored legacy PHP views into secure RESTful APIs with proper authentication",
-      "Built a React Native app with Offline-first architecture using Redux Persist for seamless data sync",
-      "Reduced data access time by 40% for remote staff through optimized API endpoints",
-      "Implemented automated data synchronization when connectivity is restored",
+      "API Gateway: Refactored legacy PHP views into secure, documented RESTful APIs",
+      "Offline-First Architecture: Engineered a robust React Native app using Redux Persist, ensuring seamless operation in low-connectivity environments",
+      "Performance: Reduced data access latency by 40% for remote staff through optimized endpoints",
+      "Sync Logic: Implemented background data synchronization algorithms to resolve conflicts automatically when connectivity is restored",
     ],
     tech: ["React Native", "Node.js", "MySQL", "Redux Persist", "REST API", "Docker", "PHP (Legacy)"],
     color: "from-orange-500/20 to-red-500/20",
     accentColor: "text-orange-400",
+    githubUrl: "",
+    demoUrl: "",
   },
   {
     id: 2,
@@ -29,18 +31,20 @@ const projects = [
     role: "AI Engineer",
     category: "Computer Vision & System Integration",
     description:
-      "Engineered a high-performance attendance system using Python & InsightFace. Optimized multi-process architecture to achieve sub-second latency on standard CPUs.",
+      "Engineered a high-performance attendance system using Python & InsightFace. Optimized for edge deployment to achieve sub-second latency on standard CPUs.",
     challenge:
-      "Processing high-resolution RTSP video streams in real-time on standard CPU hardware while ensuring anti-spoofing security without latency.",
+      "Processing high-resolution RTSP video streams in real-time on non-GPU hardware while preventing spoofing attacks.",
     solution: [
-      "Engineered a multi-process architecture (Python Multiprocessing) to decouple AI inference from video streaming",
-      "Achieved sub-second latency (<0.5s) using InsightFace (ArcFace) and motion detection algorithms",
-      "Implemented Liveness Detection to prevent presentation attacks and ensure security compliance",
-      "Synced attendance data in real-time with legacy MySQL ERP system for automatic logging",
+      "Multi-Process Architecture: Utilized Python Multiprocessing to decouple heavy AI inference tasks from video streaming threads, preventing bottlenecks",
+      "Optimization: Achieved <0.5s latency using InsightFace (ArcFace) combined with motion detection triggers",
+      "Security: Implemented Liveness Detection algorithms to nullify presentation attacks (anti-spoofing)",
+      "Integration: Synced attendance logs in real-time with the legacy MySQL ERP system",
     ],
     tech: ["Python", "InsightFace", "OpenCV", "Flask", "MySQL", "Docker", "RTSP"],
     color: "from-blue-500/20 to-cyan-500/20",
     accentColor: "text-cyan-400",
+    githubUrl: "",
+    demoUrl: "",
   },
   {
     id: 3,
@@ -48,18 +52,20 @@ const projects = [
     role: "Full Stack Engineer",
     category: "Enterprise SaaS",
     description:
-      "Developed a comprehensive management system for retail operations, featuring inventory management, POS integration, and real-time reporting.",
+      "Developed a comprehensive retail management ecosystem featuring Inventory, POS, and real-time analytics.",
     challenge:
-      "Handling real-time inventory updates across multiple locations while maintaining data consistency and providing instant reporting.",
+      "Synchronizing real-time inventory updates across multiple physical locations and ensuring instant reporting accuracy.",
     solution: [
-      "Built a scalable backend with NestJS following SOLID principles and enterprise design patterns",
-      "Developed responsive React frontend with Material-UI and real-time barcode scanning capability",
-      "Implemented MySQL with TypeORM for reliable data persistence and complex queries",
-      "Containerized entire stack with Docker for consistent deployment across environments",
+      "Architecture: Built a scalable, type-safe backend with NestJS following SOLID principles and Enterprise Design Patterns",
+      "Frontend: Developed a responsive React dashboard with Material-UI, integrating real-time barcode scanning",
+      "Data Layer: Utilized MySQL with TypeORM for complex relationship management and reliable persistence",
+      "DevOps: Fully containerized the stack with Docker for consistent CI/CD and deployment",
     ],
     tech: ["React", "NestJS", "MySQL", "Material-UI", "TypeORM", "Docker"],
     color: "from-purple-500/20 to-pink-500/20",
     accentColor: "text-pink-400",
+    githubUrl: "",
+    demoUrl: "",
   },
   {
     id: 4,
@@ -67,18 +73,20 @@ const projects = [
     role: "AI Engineer",
     category: "Generative AI & EdTech",
     description:
-      "Developed an intelligent tutoring platform leveraging generative AI to provide personalized math education with real-time feedback. Live at smartmath.edu.vn",
+      "Created an intelligent tutoring platform leveraging Generative AI to provide personalized math education with contextual feedback.",
     challenge:
-      "Achieving low-latency chat responses while maintaining educational accuracy and personalized error analysis.",
+      "Minimizing chat latency for a seamless user experience while ensuring educational accuracy in model responses.",
     solution: [
-      "Integrated OpenAI API with Bun runtime for high-performance chat latency and efficient resource utilization",
-      "Designed custom prompts for contextual math error analysis and step-by-step guidance",
-      "Built a scalable backend to handle concurrent user sessions with proper request queuing",
-      "Implemented response streaming for improved perceived performance and user experience",
+      "High-Performance Runtime: Integrated OpenAI API with Bun runtime, significantly reducing server overhead and response latency",
+      "Prompt Engineering: Designed custom \"Chain-of-Thought\" prompts to guide the AI in error analysis and step-by-step teaching",
+      "Concurrency: Built a scalable backend capable of handling concurrent user sessions with efficient request queuing",
+      "UX: Implemented Response Streaming to provide immediate visual feedback to students",
     ],
     tech: ["Bun", "OpenAI API", "TypeScript", "MySQL", "React"],
     color: "from-green-500/20 to-emerald-500/20",
     accentColor: "text-emerald-400",
+    githubUrl: "",
+    demoUrl: "https://smartmath.edu.vn",
   },
 ]
 
@@ -114,11 +122,10 @@ export default function Projects() {
             <button
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              className={`p-4 rounded-lg border transition-all text-left transform hover:scale-105 duration-300 ${
-                selectedProject.id === project.id
-                  ? "bg-card border-secondary shadow-lg shadow-secondary/20"
-                  : "bg-card/50 border-border hover:border-secondary/50"
-              }`}
+              className={`p-4 rounded-lg border transition-all text-left transform hover:scale-105 duration-300 ${selectedProject.id === project.id
+                ? "bg-card border-secondary shadow-lg shadow-secondary/20"
+                : "bg-card/50 border-border hover:border-secondary/50"
+                }`}
               style={isVisible ? { animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s backwards` } : {}}
             >
               <div
@@ -166,14 +173,28 @@ export default function Projects() {
               </div>
 
               <div className="flex gap-3 pt-4">
-                <button className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 font-medium inline-flex items-center gap-2 hover:shadow-lg hover:shadow-primary/30">
-                  <ExternalLink size={16} />
-                  Learn More
-                </button>
-                <button className="px-6 py-2 border border-secondary text-foreground rounded-lg hover:bg-card/50 hover:border-secondary/80 transition-all duration-300 font-medium inline-flex items-center gap-2">
-                  <Github size={16} />
-                  Code
-                </button>
+                {selectedProject.demoUrl && (
+                  <a
+                    href={selectedProject.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 font-medium inline-flex items-center gap-2 hover:shadow-lg hover:shadow-primary/30"
+                  >
+                    <ExternalLink size={16} />
+                    Learn More
+                  </a>
+                )}
+                {selectedProject.githubUrl && (
+                  <a
+                    href={selectedProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-2 border border-secondary text-foreground rounded-lg hover:bg-card/50 hover:border-secondary/80 transition-all duration-300 font-medium inline-flex items-center gap-2"
+                  >
+                    <Github size={16} />
+                    Code
+                  </a>
+                )}
               </div>
             </div>
 

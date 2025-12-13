@@ -29,13 +29,14 @@ export default function About() {
           <div className={isVisible ? "animate-slide-in-left" : "opacity-0"}>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">AI Engineer & Full Stack Developer</h2>
             <p className="text-muted-foreground text-base leading-relaxed mb-4">
-              Software Engineer with 2 years of experience specializing in Legacy System Modernization (PHP to Mobile)
-              and Real-world AI Integration (FaceID, GenAI). Master's Degree Candidate in Computer Science.
+              Software Engineer with 2 years of experience specializing in Legacy System Modernization and Real-world AI
+              Integration. Master's Degree Candidate in Computer Science.
             </p>
             <p className="text-muted-foreground text-base leading-relaxed mb-6">
-              I specialize in building intelligent systems with real-time processing, API integration, and scalable
-              cloud architectures. My expertise spans AI/ML implementation, full-stack development with modern
-              frameworks, and DevOps practices for enterprise-grade deployments.
+              I bridge the gap between traditional enterprise software and cutting-edge AI, with a proven track record of
+              migrating monolithic PHP systems to scalable mobile architectures and optimizing Deep Learning models for
+              edge deployment. My expertise spans high-performance AI inference (FaceID, GenAI), full-stack development
+              with modern frameworks, and DevOps practices for mission-critical applications.
             </p>
             <div className="space-y-3">
               <div>
