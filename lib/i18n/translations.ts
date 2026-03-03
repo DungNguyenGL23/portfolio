@@ -228,7 +228,7 @@ export const translations = {
                 started: "Bắt đầu Sự nghiệp",
                 total: "Tổng Kinh Nghiệm",
                 current: "Cấp độ Hiện tại",
-                seniorTrack: "Kỹ sư Cấp cao (Track)",
+                seniorTrack: "Full Stack Engineer",
                 startedDate: "Tháng 2/2024",
                 experienceYears: "2 Năm"
             },
