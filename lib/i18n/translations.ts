@@ -92,7 +92,7 @@ export const translations = {
             items: [
                 {
                     title: "E-commerce Fashion Platform",
-                    role: "Full Stack Developer",
+                    role: "Full Stack Developer | COVASOL TEAM",
                     category: "Web Application",
                     description: "Developed a comprehensive e-commerce web system for the fashion sector, utilizing TypeScript as the core language to ensure stability and scalability.",
                     challenge: "Standardizing code structure and enforcing strict typing across a full-stack architecture.",
@@ -104,7 +104,7 @@ export const translations = {
                 },
                 {
                     title: "SmartMath - AI Supported Learning Platform",
-                    role: "Full Stack Developer",
+                    role: "Full Stack Developer | COVASOL TEAM",
                     category: "EdTech & Web Application",
                     description: "Built an intelligent educational technology platform focused on math problem-solving, utilizing a full-stack web architecture.",
                     challenge: "Handling complex server-side business logic and integrating specialized scripts.",
@@ -273,7 +273,7 @@ export const translations = {
             items: [
                 {
                     title: "Nền tảng Thương mại điện tử Thời trang",
-                    role: "Lập trình viên Full Stack | Dự án cá nhân",
+                    role: "Lập trình viên Full Stack | COVASOL TEAM",
                     category: "Web Application",
                     description: "Phát triển hệ thống web thương mại điện tử toàn diện cho lĩnh vực thời trang, sử dụng TypeScript làm ngôn ngữ cốt lõi để đảm bảo tính ổn định và khả năng mở rộng.",
                     challenge: "Phát triển hệ thống web thương mại điện tử toàn diện cho lĩnh vực thời trang, sử dụng TypeScript làm ngôn ngữ cốt lõi để đảm bảo tính ổn định và khả năng mở rộng.",
@@ -285,7 +285,7 @@ export const translations = {
                 },
                 {
                     title: "SmartMath - Nền tảng Học tập Hỗ trợ bởi AI",
-                    role: "Lập trình viên Full Stack | Dự án cá nhân",
+                    role: "Lập trình viên Full Stack | COVASOL TEAM",
                     category: "EdTech & Web Application",
                     description: "Xây dựng nền tảng công nghệ giáo dục (EdTech) thông minh hỗ trợ giải toán, sử dụng kiến trúc web full-stack.",
                     challenge: "Xây dựng nền tảng công nghệ giáo dục (EdTech) thông minh hỗ trợ giải toán, sử dụng kiến trúc web full-stack.",
@@ -321,7 +321,7 @@ export const translations = {
                 },
                 {
                     title: "Hệ thống Quản lý Chuỗi Cửa hàng Thú cưng",
-                    role: "Kỹ sư Full Stack | SOF",
+                    role: "Kỹ sư Full Stack | Dự án cá nhân",
                     category: "Enterprise SaaS",
                     description: "Phát triển một hệ sinh thái quản lý bán lẻ toàn diện với các tính năng Quản lý Kho, POS và phân tích dữ liệu theo thời gian thực.",
                     challenge: "Phát triển một hệ sinh thái quản lý bán lẻ toàn diện với các tính năng Quản lý Kho, POS và phân tích dữ liệu theo thời gian thực.",

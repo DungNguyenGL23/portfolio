@@ -85,10 +85,17 @@ export default function Projects() {
         {/* Project Tabs */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
           {projects.map((project, idx) => (
-            <button
+            <div
               key={project.id}
+              role="button"
+              tabIndex={0}
               onClick={() => setSelectedProject(project)}
-              className={`p-4 rounded-lg border transition-all text-left transform hover:scale-105 duration-300 ${selectedProject.id === project.id
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setSelectedProject(project);
+                }
+              }}
+              className={`p-4 rounded-lg border transition-all text-left transform hover:scale-105 duration-300 cursor-pointer ${selectedProject.id === project.id
                 ? "bg-card border-secondary shadow-lg shadow-secondary/20"
                 : "bg-card/50 border-border hover:border-secondary/50"
                 }`}
@@ -97,10 +104,26 @@ export default function Projects() {
               <div
                 className={`text-xs font-bold mb-2 ${selectedProject.id === project.id ? "text-secondary" : "text-muted-foreground"}`}
               >
-                {project.role}
+                {project.role.includes("COVASOL TEAM") ? (
+                  <>
+                    {project.role.split("COVASOL TEAM")[0]}
+                    <a
+                      href="https://covasol.com.vn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="hover:underline transition-colors"
+                    >
+                      COVASOL TEAM
+                    </a>
+                    {project.role.split("COVASOL TEAM")[1]}
+                  </>
+                ) : (
+                  project.role
+                )}
               </div>
               <h3 className="font-bold text-sm text-foreground line-clamp-2">{project.title}</h3>
-            </button>
+            </div>
           ))}
         </div>
 
@@ -113,7 +136,24 @@ export default function Projects() {
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-1 h-6 bg-secondary rounded-full" />
-                  <span className="text-xs font-bold text-secondary tracking-wider">{selectedProject.role}</span>
+                  <span className="text-xs font-bold text-secondary tracking-wider">
+                    {selectedProject.role.includes("COVASOL TEAM") ? (
+                      <>
+                        {selectedProject.role.split("COVASOL TEAM")[0]}
+                        <a
+                          href="https://covasol.com.vn"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline transition-colors"
+                        >
+                          COVASOL TEAM
+                        </a>
+                        {selectedProject.role.split("COVASOL TEAM")[1]}
+                      </>
+                    ) : (
+                      selectedProject.role
+                    )}
+                  </span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-2">{selectedProject.title}</h3>
                 <p className="text-secondary text-sm font-medium">{selectedProject.category}</p>
