@@ -1,8 +1,11 @@
 "use client"
 
 import { ArrowDown } from "lucide-react"
+import { useLanguage } from "./language-provider"
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   const scrollToProjects = () => {
     const element = document.getElementById("projects")
     element?.scrollIntoView({ behavior: "smooth" })
@@ -13,19 +16,17 @@ export default function Hero() {
       <div className="max-w-4xl text-center space-y-8">
         <div className="space-y-4 animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold text-balance">
-            <span className="text-foreground">Nguyễn Thế Dũng</span>
+            <span className="text-foreground">{t.hero.title}</span>
           </h1>
-          <p className="text-xl md:text-2xl text-secondary font-light">AI Engineer & Full Stack Developer</p>
-          <p className="text-lg text-accent font-medium">Building intelligent systems and scalable web solutions</p>
+          <p className="text-xl md:text-2xl text-secondary font-light">{t.hero.role}</p>
+          <p className="text-lg text-accent font-medium">{t.hero.subtitle}</p>
         </div>
 
         <p
           className="text-base text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
-          Software engineer with 1.5 years of experience specializing in Digital Transformation and AI Integration. I
-          build high-performance systems that migrate legacy architectures to modern solutions, delivering
-          enterprise-grade AI applications for digital innovation.
+          {t.hero.description}
         </p>
 
         <div className="flex gap-4 justify-center flex-wrap animate-fade-in" style={{ animationDelay: "0.4s" }}>
@@ -33,13 +34,13 @@ export default function Hero() {
             onClick={scrollToProjects}
             className="px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 font-medium hover:shadow-lg hover:shadow-primary/50"
           >
-            View My Projects
+            {t.hero.viewProjects}
           </button>
           <a
             href="#contact"
             className="px-8 py-3 border border-secondary text-foreground rounded-lg hover:bg-card hover:border-secondary/80 transition-all duration-300 font-medium"
           >
-            Contact Me
+            {t.hero.contactMe}
           </a>
         </div>
 

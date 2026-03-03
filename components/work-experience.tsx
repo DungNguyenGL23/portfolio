@@ -1,9 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { useLanguage } from "./language-provider"
 
 export default function WorkExperience() {
   const [isVisible, setIsVisible] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -17,48 +20,28 @@ export default function WorkExperience() {
     return () => observer.disconnect()
   }, [])
 
-  const experiences = [
+  const baseExperiences = [
     {
-      role: "AI Engineer & Full Stack Developer",
-      company: "SOF",
-      period: "May 2024 – Present",
-      duration: "1.5+ Years",
-      description:
-        "Lead technical initiatives for digital transformation and enterprise AI deployment.",
-      highlights: [
-        "Legacy to Mobile Migration: Spearheaded the transformation of legacy ERP systems into modern, offline-first mobile architectures.",
-        "AI Implementation: Engineered biometric authentication systems (FaceID) for attendance tracking, optimized for standard hardware.",
-        "Full Stack Ecosystems: Built comprehensive solutions (POS, Inventory, CRM) for retail clients like Pet Shops.",
-        "Infrastructure: Deployed high-performance, containerized AI systems ensuring 99.9% uptime.",
-      ],
-      skills: ["React", "NestJS", "Python", "OpenCV", "PostgreSQL", "Docker", "Nginx"],
-      color: "from-cyan-500/20 to-blue-500/20",
+      skills: ["React", "NestJS", "Python", "OpenCV", "MySQL", "Docker", "TypeORM"],
+      color: "from-stone-500/20 to-neutral-500/20",
     },
     {
-      role: "Mobile Developer Intern",
-      company: "DIEN TOAN GROUP",
-      period: "Feb 2024 – Apr 2024",
-      duration: "3 Months",
-      description:
-        "Developed performant React Native applications and implemented secure API consumption strategies.",
-      highlights: [
-        "Cross-Platform Development: Developed performant React Native applications, translating design specs into responsive UI/UX.",
-        "Backend Integration: Implemented secure API consumption strategies and worked closely with senior architects to adopt industry best practices.",
-      ],
-      skills: ["React Native", "JavaScript", "REST APIs", "UI/UX", "Git"],
-      color: "from-purple-500/20 to-pink-500/20",
+      skills: ["React Native", "REST APIs", "State Management", "UI/UX"],
+      color: "from-amber-500/20 to-orange-500/20",
     },
   ]
+
+  const experiences = t.experience.jobs.map((job, idx) => ({ ...job, ...baseExperiences[idx] }))
 
   return (
     <section id="experience" className="py-20 px-4 md:px-8 bg-card/10">
       <div className="max-w-5xl mx-auto">
         <div className="inline-flex items-center gap-2 mb-12">
           <div className="w-2 h-2 bg-secondary rounded-full" />
-          <span className="text-sm font-semibold text-secondary tracking-wider">PROFESSIONAL JOURNEY</span>
+          <span className="text-sm font-semibold text-secondary tracking-wider">{t.experience.sectionTitle}</span>
         </div>
 
-        <h2 className="text-4xl md:text-5xl font-bold mb-16">Work Experience</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-16">{t.experience.title}</h2>
 
         <div className="space-y-8">
           {experiences.map((exp, idx) => (
@@ -78,7 +61,7 @@ export default function WorkExperience() {
                   <p className="text-lg font-bold text-secondary">{exp.duration}</p>
                 </div>
                 <div className="md:text-right">
-                  <p className="text-xs font-bold text-secondary tracking-wider mb-2">TECH STACK</p>
+                  <p className="text-xs font-bold text-secondary tracking-wider mb-2">{t.experience.techStack}</p>
                   <div className="flex flex-wrap gap-2 md:justify-end">
                     {exp.skills.slice(0, 3).map((skill, idx) => (
                       <span
@@ -100,11 +83,11 @@ export default function WorkExperience() {
               <p className="text-muted-foreground mb-6 leading-relaxed">{exp.description}</p>
 
               <div>
-                <p className="text-xs font-bold text-secondary mb-4 tracking-wider">KEY ACHIEVEMENTS</p>
+                <p className="text-xs font-bold text-secondary mb-4 tracking-wider">{t.experience.keyAchievements}</p>
                 <div className="space-y-3">
                   {exp.highlights.map((highlight, idx) => (
                     <div key={idx} className="flex gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                      <CheckCircle2 size={16} className="text-secondary mt-0.5 flex-shrink-0" />
                       <p className="text-muted-foreground text-sm leading-relaxed">{highlight}</p>
                     </div>
                   ))}
@@ -118,18 +101,18 @@ export default function WorkExperience() {
         <div className="mt-12 p-6 rounded-lg bg-background border border-border/50">
           <div className="flex items-center gap-4 flex-wrap">
             <div>
-              <p className="text-sm text-muted-foreground">Started Career</p>
-              <p className="text-lg font-bold text-secondary">February 2024</p>
+              <p className="text-sm text-muted-foreground">{t.experience.timeline.started}</p>
+              <p className="text-lg font-bold text-secondary">{t.experience.timeline.startedDate}</p>
             </div>
-            <div className="text-2xl text-secondary/30">→</div>
+            <div className="text-secondary/50 flex align-center"><ArrowRight size={20} /></div>
             <div>
-              <p className="text-sm text-muted-foreground">Total Experience</p>
-              <p className="text-lg font-bold text-accent">Nearly 2 Years</p>
+              <p className="text-sm text-muted-foreground">{t.experience.timeline.total}</p>
+              <p className="text-lg font-bold text-accent">{t.experience.timeline.experienceYears}</p>
             </div>
-            <div className="text-2xl text-secondary/30">→</div>
+            <div className="text-secondary/50 flex align-center"><ArrowRight size={20} /></div>
             <div>
-              <p className="text-sm text-muted-foreground">Current Track</p>
-              <p className="text-lg font-bold text-primary">Senior-track Engineer</p>
+              <p className="text-sm text-muted-foreground">{t.experience.timeline.current}</p>
+              <p className="text-lg font-bold text-primary">{t.experience.timeline.seniorTrack}</p>
             </div>
           </div>
         </div>

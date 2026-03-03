@@ -1,98 +1,64 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, CheckCircle2 } from "lucide-react"
+import { useLanguage } from "./language-provider"
 
-const projects = [
+const baseProjects = [
   {
     id: 1,
-    title: "Enterprise ERP Mobile Transformation",
-    role: "Lead Engineer",
-    category: "Legacy Modernization & Mobile Dev",
-    description:
-      "Led the strategic migration of a monolithic PHP ERP system into a modern mobile ecosystem using React Native, empowering 100+ remote staff with offline capabilities.",
-    challenge:
-      "Decoupling complex business logic from a legacy PHP codebase while ensuring data consistency without disrupting ongoing web operations.",
-    solution: [
-      "API Gateway: Refactored legacy PHP views into secure, documented RESTful APIs",
-      "Offline-First Architecture: Engineered a robust React Native app using Redux Persist, ensuring seamless operation in low-connectivity environments",
-      "Performance: Reduced data access latency by 40% for remote staff through optimized endpoints",
-      "Sync Logic: Implemented background data synchronization algorithms to resolve conflicts automatically when connectivity is restored",
-    ],
-    tech: ["React Native", "Node.js", "MySQL", "Redux Persist", "REST API", "Docker", "PHP (Legacy)"],
-    color: "from-orange-500/20 to-red-500/20",
-    accentColor: "text-orange-400",
-    githubUrl: "",
-    demoUrl: "",
+    tech: ["TypeScript", "Web App Architecture", "API Integration", "Release Management"],
+    color: "from-stone-500/20 to-neutral-500/20",
+    accentColor: "text-stone-400",
+    githubUrl: "https://github.com/COVASOL/Clothing",
+    demoUrl: "https://tafas.vn",
   },
   {
     id: 2,
-    title: "Face Recognition Attendance System",
-    role: "AI Engineer",
-    category: "Computer Vision & System Integration",
-    description:
-      "Engineered a high-performance attendance system using Python & InsightFace. Optimized for edge deployment to achieve sub-second latency on standard CPUs.",
-    challenge:
-      "Processing high-resolution RTSP video streams in real-time on non-GPU hardware while preventing spoofing attacks.",
-    solution: [
-      "Multi-Process Architecture: Utilized Python Multiprocessing to decouple heavy AI inference tasks from video streaming threads, preventing bottlenecks",
-      "Optimization: Achieved <0.5s latency using InsightFace (ArcFace) combined with motion detection triggers",
-      "Security: Implemented Liveness Detection algorithms to nullify presentation attacks (anti-spoofing)",
-      "Integration: Synced attendance logs in real-time with the legacy MySQL ERP system",
-    ],
-    tech: ["Python", "InsightFace", "OpenCV", "Flask", "MySQL", "Docker", "RTSP"],
-    color: "from-blue-500/20 to-cyan-500/20",
-    accentColor: "text-cyan-400",
-    githubUrl: "",
-    demoUrl: "",
+    tech: ["TypeScript", "SCSS", "HTML/CSS", "JavaScript", "Python"],
+    color: "from-emerald-500/20 to-teal-500/20",
+    accentColor: "text-emerald-400",
+    githubUrl: "https://github.com/COVASOL/smartmath",
+    demoUrl: "https://smartmath.edu.vn",
   },
   {
     id: 3,
-    title: "Pet Shop Management System",
-    role: "Full Stack Engineer",
-    category: "Enterprise SaaS",
-    description:
-      "Developed a comprehensive retail management ecosystem featuring Inventory, POS, and real-time analytics.",
-    challenge:
-      "Synchronizing real-time inventory updates across multiple physical locations and ensuring instant reporting accuracy.",
-    solution: [
-      "Architecture: Built a scalable, type-safe backend with NestJS following SOLID principles and Enterprise Design Patterns",
-      "Frontend: Developed a responsive React dashboard with Material-UI, integrating real-time barcode scanning",
-      "Data Layer: Utilized MySQL with TypeORM for complex relationship management and reliable persistence",
-      "DevOps: Fully containerized the stack with Docker for consistent CI/CD and deployment",
-    ],
-    tech: ["React", "NestJS", "MySQL", "Material-UI", "TypeORM", "Docker"],
-    color: "from-purple-500/20 to-pink-500/20",
-    accentColor: "text-pink-400",
+    tech: ["React Native", "Node.js", "MySQL", "Redux Persist", "REST API", "Docker", "PHP (Legacy)"],
+    color: "from-amber-500/20 to-orange-500/20",
+    accentColor: "text-amber-400",
     githubUrl: "",
     demoUrl: "",
   },
   {
     id: 4,
-    title: "SmartMath AI Tutor",
-    role: "AI Engineer",
-    category: "Generative AI & EdTech",
-    description:
-      "Created an intelligent tutoring platform leveraging Generative AI to provide personalized math education with contextual feedback.",
-    challenge:
-      "Minimizing chat latency for a seamless user experience while ensuring educational accuracy in model responses.",
-    solution: [
-      "High-Performance Runtime: Integrated OpenAI API with Bun runtime, significantly reducing server overhead and response latency",
-      "Prompt Engineering: Designed custom \"Chain-of-Thought\" prompts to guide the AI in error analysis and step-by-step teaching",
-      "Concurrency: Built a scalable backend capable of handling concurrent user sessions with efficient request queuing",
-      "UX: Implemented Response Streaming to provide immediate visual feedback to students",
-    ],
-    tech: ["Bun", "OpenAI API", "TypeScript", "MySQL", "React"],
-    color: "from-green-500/20 to-emerald-500/20",
-    accentColor: "text-emerald-400",
+    tech: ["Python", "InsightFace", "OpenCV", "Flask", "MySQL", "Docker", "RTSP"],
+    color: "from-slate-500/20 to-zinc-500/20",
+    accentColor: "text-slate-400",
     githubUrl: "",
-    demoUrl: "https://smartmath.edu.vn",
+    demoUrl: "",
   },
+  {
+    id: 5,
+    tech: ["React", "NestJS", "MySQL", "Material-UI", "TypeORM", "Docker"],
+    color: "from-teal-500/20 to-cyan-600/20",
+    accentColor: "text-teal-400",
+    githubUrl: "",
+    demoUrl: "",
+  }
 ]
 
 export default function Projects() {
+  const { t } = useLanguage()
+  const projects = t.projects.items.map((item, idx) => ({ ...item, ...baseProjects[idx] }))
+
   const [selectedProject, setSelectedProject] = useState(projects[0])
   const [isVisible, setIsVisible] = useState(false)
+
+  // Update selected project when language changes to maintain data synchronization
+  useEffect(() => {
+    const freshProject = projects.find(p => p.id === selectedProject.id) || projects[0];
+    setSelectedProject(freshProject)
+  }, [t])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -111,10 +77,10 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         <div className="inline-flex items-center gap-2 mb-12">
           <div className="w-2 h-2 bg-secondary rounded-full" />
-          <span className="text-sm font-semibold text-secondary tracking-wider">PORTFOLIO</span>
+          <span className="text-sm font-semibold text-secondary tracking-wider">{t.projects.sectionTitle}</span>
         </div>
 
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-balance">Featured Projects</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-balance">{t.projects.title}</h2>
 
         {/* Project Tabs */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
@@ -156,16 +122,16 @@ export default function Projects() {
               <p className="text-muted-foreground leading-relaxed">{selectedProject.description}</p>
 
               <div>
-                <h4 className="text-sm font-bold text-secondary mb-3 tracking-wider">TECHNICAL CHALLENGES SOLVED</h4>
+                <h4 className="text-sm font-bold text-secondary mb-3 tracking-wider">{t.projects.techChallenges}</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">{selectedProject.challenge}</p>
               </div>
 
               <div>
-                <h4 className="text-sm font-bold text-secondary mb-3 tracking-wider">KEY TECHNICAL HIGHLIGHTS</h4>
+                <h4 className="text-sm font-bold text-secondary mb-3 tracking-wider">{t.projects.techHighlights}</h4>
                 <div className="space-y-2">
-                  {selectedProject.solution.map((point, idx) => (
+                  {selectedProject.solution.map((point: string, idx: number) => (
                     <div key={idx} className="flex gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                      <CheckCircle2 size={16} className="text-secondary mt-0.5 flex-shrink-0" />
                       <p className="text-muted-foreground text-sm leading-relaxed">{point}</p>
                     </div>
                   ))}
@@ -181,7 +147,7 @@ export default function Projects() {
                     className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 font-medium inline-flex items-center gap-2 hover:shadow-lg hover:shadow-primary/30"
                   >
                     <ExternalLink size={16} />
-                    Learn More
+                    {t.projects.learnMore}
                   </a>
                 )}
                 {selectedProject.githubUrl && (
@@ -192,7 +158,7 @@ export default function Projects() {
                     className="px-6 py-2 border border-secondary text-foreground rounded-lg hover:bg-card/50 hover:border-secondary/80 transition-all duration-300 font-medium inline-flex items-center gap-2"
                   >
                     <Github size={16} />
-                    Code
+                    {t.projects.code}
                   </a>
                 )}
               </div>
@@ -200,9 +166,9 @@ export default function Projects() {
 
             <div className="md:col-span-1 space-y-6">
               <div>
-                <p className="text-xs font-bold text-secondary mb-4 tracking-wider">TECHNOLOGIES</p>
+                <p className="text-xs font-bold text-secondary mb-4 tracking-wider">{t.projects.technologies}</p>
                 <div className="flex flex-wrap gap-2">
-                  {selectedProject.tech.map((tech, idx) => (
+                  {selectedProject.tech.map((tech: string, idx: number) => (
                     <span
                       key={idx}
                       className="px-3 py-1.5 bg-background/50 text-foreground text-xs rounded-full border border-border hover:border-secondary/50 transition-colors cursor-default"
@@ -214,8 +180,8 @@ export default function Projects() {
               </div>
 
               <div className="text-xs text-muted-foreground pt-6 border-t border-border/50">
-                <p className="mb-2 font-medium text-foreground">Featured Work:</p>
-                <p>Click on any project to explore the technical challenges solved and key achievements</p>
+                <p className="mb-2 font-medium text-foreground">{t.projects.featuredWork}</p>
+                <p>{t.projects.clickToExplore}</p>
               </div>
             </div>
           </div>

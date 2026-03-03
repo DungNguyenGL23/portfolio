@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <p className="text-muted-foreground text-sm">© {currentYear} Nguyễn Thế Dũng. All rights reserved.</p>
         <div className="flex gap-6">
-          <a href="https://github.com" className="text-muted-foreground hover:text-accent transition-colors text-sm">
+          <a href="https://github.com/DungNguyenGL23" className="text-muted-foreground hover:text-accent transition-colors text-sm">
             GitHub
           </a>
           <a
